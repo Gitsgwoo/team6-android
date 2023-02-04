@@ -34,6 +34,7 @@ class FolloweeListAdapter(private val onItemClicked1: (FolloweeDTO) -> Unit, pri
             }
             holder.unfollowButton.setOnClickListener {
                 onItemClicked2(current)
+                holder.visitButton.visibility= INVISIBLE
             }
             holder.bind(it)
         }

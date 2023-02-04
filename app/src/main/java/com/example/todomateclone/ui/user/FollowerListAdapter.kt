@@ -32,6 +32,7 @@ class FollowerListAdapter(private val onItemClicked1: (FollowerDTO) -> Unit, pri
 
         current?.let {
             holder.deleteButton.setOnClickListener {
+                holder.itemView.visibility = INVISIBLE
                 onItemClicked1(current)
             }
             holder.blockButton.setOnClickListener {

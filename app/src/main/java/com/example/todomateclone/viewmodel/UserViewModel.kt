@@ -65,7 +65,11 @@ class UserViewModel(
                 AuthStorageUserDTO(response.user.id, response.user.email)
             )
             Log.d("UserViewModel", "authInfo is valid")
-        } catch (e: Exception) {
+        } catch (e: HttpException) {
+            if(e.code() == 400) toaster.toast("비밀번호나 아이디가 잘못되었습니다.")
+            else toaster.toastApiError(e)
+        }
+        catch (e: Exception) {
             toaster.toastApiError(e)
         }
     }

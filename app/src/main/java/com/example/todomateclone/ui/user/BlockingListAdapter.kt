@@ -32,6 +32,7 @@ class BlockingListAdapter(private val onItemClicked1: (BlockingDTO) -> Unit) : P
         current?.let {
             holder.unblockButton.setOnClickListener {
                 onItemClicked1(current)
+                holder.itemView.visibility = INVISIBLE
             }
             holder.bind(it)
         }

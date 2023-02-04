@@ -51,7 +51,7 @@
     <string name="diary_comment_content">댓글 내용입니다.</string>
     <string name="edit_diary">수정하기</string>
     <string name="delete_diary">삭제하기</string>
-    <string name="edit_comment">수정하기</string>
+    <string name="back_comment">돌아가기</string>
     <string name="delete_comment">삭제하기</string>
     <!-- task string resource-->
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -35,16 +36,22 @@ class TodoListFragment : Fragment(), OnDismissListener, OnDismissListenerAdder {
         bottomSheetDialog.setOnDismissListenerAdder(this)
         bottomSheetDialog.show(requireFragmentManager(), "BottomSheetDialog")
         refreshTask()
+        binding.dateTextView.visibility = VISIBLE
+        refreshTask()
     }
 
     override fun onDismissDelay(task: TaskDTO) {
         lifecycleScope.launch {viewModel.delayTodo(task.id)}
         refreshTask()
+        binding.dateTextView.visibility = VISIBLE
+
     }
 
     override fun onDismissDelete(task: TaskDTO) {
         lifecycleScope.launch {viewModel.deleteTodo(task.id)}
         refreshTask()
+        binding.dateTextView.visibility = VISIBLE
+
     }
 
     override fun onDismissToday(task: TaskDTO) {
@@ -53,6 +60,8 @@ class TodoListFragment : Fragment(), OnDismissListener, OnDismissListenerAdder {
         val todaysdate = today.format(formatter)
         lifecycleScope.launch {viewModel.changeTodo(task.name, todaysdate, task.start_time, task.end_time, task.id)}
         refreshTask()
+        binding.dateTextView.visibility = VISIBLE
+
     }
 
 
